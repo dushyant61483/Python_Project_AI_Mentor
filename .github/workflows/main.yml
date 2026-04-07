@@ -1,0 +1,23 @@
+name: Run My Groq Script
+on: [push] # Runs every time you push code
+
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install python-dotenv groq # and any other libs
+
+      - name: Run Script
+        env:
+          # This pulls your GitHub Secret into the environment
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }} 
+        run: python your_script_name.py
