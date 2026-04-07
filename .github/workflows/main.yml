@@ -20,4 +20,4 @@ jobs:
         env:
           # This pulls your GitHub Secret into the environment
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }} 
-        run: python your_script_name.py
+        run: python main.py
